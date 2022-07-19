@@ -10,7 +10,7 @@ function formatMessage(username, text) {
 }
 
 function saveToLog(message, user) {
-  formatMessage(user.username, message.text);
+  message = formatMessage(user.username, message.text);
   let LogLine = `Room : ${user.room}, ${message.username}: ${message.text} AT ${message.time}\n`;
   fs.appendFile(`log/logRoom${user.room}.txt`, LogLine, (err) => {
     if (err) {
