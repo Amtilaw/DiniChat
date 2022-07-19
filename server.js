@@ -66,12 +66,10 @@ io.on("connection", (socket) => {
   // Listen for chatMessage
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id);
-    formatMessage.saveToLog(msg, user);
+    const message = formatMessage(user.username, msg);
+    formatMessage.saveToLog(message, user);
 
-    io.to(user.room).emit(
-      "message",
-      formatMessage.formatMessage(user.username, msg)
-    );
+    io.to(user.room).emit("message", message);
   });
 
   // Runs when client disconnects
