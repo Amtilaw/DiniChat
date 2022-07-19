@@ -186,6 +186,10 @@ a {
 	color:red;
 }
 
+#AdrienJJ {
+	color:rgb(90, 40, 102);
+}
+
 @media (max-width: 700px) {
 	.chat-main {
 		display: block;
