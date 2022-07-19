@@ -3,6 +3,7 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
+const addToLog = require("./utils/saveToLog");
 const createAdapter = require("@socket.io/redis-adapter").createAdapter;
 const redis = require("redis");
 require("dotenv").config();
@@ -17,6 +18,7 @@ const {
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+var log;
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
@@ -58,6 +60,7 @@ io.on("connection", (socket) => {
 
   // Listen for chatMessage
   socket.on("chatMessage", (msg) => {
+    addToLog(msg, user);
     const user = getCurrentUser(socket.id);
 
     io.to(user.room).emit("message", formatMessage(user.username, msg));
