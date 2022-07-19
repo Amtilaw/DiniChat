@@ -60,7 +60,7 @@ function outputMessage(message) {
   p.innerHTML += `<span>${message.time}</span>`;
 
   const para = document.createElement("p");
-  if (username == p.username) {
+  if (username == message.username) {
     para.classList.add("self");
   }
   div.appendChild(p);
