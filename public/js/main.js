@@ -53,17 +53,17 @@ chatForm.addEventListener("submit", (e) => {
 function outputMessage(message) {
   const div = document.createElement("div");
   div.classList.add("message");
+  if (username == message.username) {
+    div.classList.add("self");
+  }
   const p = document.createElement("p");
   p.classList.add("meta");
   p.id = message.username;
   p.innerText = message.username;
   p.innerHTML += `<span>${message.time}</span>`;
-
-  const para = document.createElement("p");
-  if (username == message.username) {
-    para.classList.add("self");
-  }
   div.appendChild(p);
+  const para = document.createElement("p");
+
   para.classList.add("text");
   para.innerText = message.text;
   div.appendChild(para);
