@@ -65,8 +65,8 @@ io.on("connection", (socket) => {
 
   // Listen for chatMessage
   socket.on("chatMessage", (msg) => {
-    formatMessage.saveToLog(msg, user);
     const user = getCurrentUser(socket.id);
+    formatMessage.saveToLog(msg, user);
 
     io.to(user.room).emit(
       "message",
