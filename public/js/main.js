@@ -58,8 +58,12 @@ function outputMessage(message) {
   p.id = message.username;
   p.innerText = message.username;
   p.innerHTML += `<span>${message.time}</span>`;
-  div.appendChild(p);
+
   const para = document.createElement("p");
+  if (username == p.username) {
+    para.classList.add("self");
+  }
+  div.appendChild(p);
   para.classList.add("text");
   para.innerText = message.text;
   div.appendChild(para);
