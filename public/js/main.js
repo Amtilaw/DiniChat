@@ -98,5 +98,7 @@ document.getElementById("leave-btn").addEventListener("click", () => {
 });
 
 function applyTheme(theme) {
-  document.querySelector(":root").style.setProperty("--dark-color-a", theme);
+  if (theme != undefined) {
+    document.querySelector(":root").style.setProperty("--dark-color-a", theme);
+  }
 }
