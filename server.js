@@ -22,7 +22,7 @@ var log;
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
-const botName = "ChatCord Bot";
+const botName = "Bot";
 
 (async () => {
   pubClient = createClient({ url: "redis://127.0.0.1:6379" }); //Port : 6379

@@ -4,11 +4,14 @@ const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
 
 // Get username and room from URL
-const { username, room } = Qs.parse(location.search, {
+const { username, room, theme } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
 const socket = io();
+
+//Apply desired theme
+applyTheme(theme);
 
 // Join chatroom
 socket.emit("joinRoom", { username, room });
@@ -93,3 +96,7 @@ document.getElementById("leave-btn").addEventListener("click", () => {
   } else {
   }
 });
+
+function applyTheme(theme) {
+  document.querySelector(":root").style.setProperty("--dark-color-a", theme);
+}
