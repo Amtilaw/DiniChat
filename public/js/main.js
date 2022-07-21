@@ -4,7 +4,12 @@ const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
 
 // Get username and room from URL
-const { username, room, theme } = Qs.parse(location.search, {
+const {
+  username,
+  room,
+  theme,
+  nameChat = "Widoo",
+} = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
@@ -14,7 +19,7 @@ const socket = io();
 applyTheme(theme);
 
 // Join chatroom
-socket.emit("joinRoom", { username, room });
+socket.emit("joinRoom", { username, room, nameChat });
 
 // Get room and users
 socket.on("roomUsers", ({ room, users }) => {

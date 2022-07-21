@@ -48,7 +48,7 @@ a {
 
 .chat-header {
 	background: var(--dark-color-a);
-	color: #fff;
+	color: var(--light-color);
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding: 15px;

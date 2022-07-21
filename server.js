@@ -34,7 +34,7 @@ const botName = "Bot";
 // Run when client connects
 io.on("connection", (socket) => {
   console.log(io.of("/").adapter);
-  socket.on("joinRoom", ({ username, room }) => {
+  socket.on("joinRoom", ({ username, room, name }) => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
     // Welcome current user
     socket.emit(
       "message",
-      formatMessage.formatMessage(botName, "Welcome to ChatCord!")
+      formatMessage.formatMessage(botName, "Welcome to " + name)
     );
 
     // Broadcast when a user connects
